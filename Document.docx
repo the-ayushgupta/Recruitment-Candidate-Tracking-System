@@ -1,0 +1,72 @@
+Recruitment & Candidate Tracking System.
+
+
+Phase 1: Problem Understanding & Industry Analysis
+
+1️⃣ Requirement Gathering
+Goal: Clearly define what the system must achieve.
+Steps:
+Identify the use case: "Recruitment & Candidate Tracking System."
+
+List functional requirements (what the system must do):
+Create/manage Job Positions.
+Store and track Candidate details (resume, skills, status).
+Schedule Interviews linked to candidates & jobs.
+Automate communication (acknowledgment, interview notifications).
+Generate Reports/Dashboards (pipeline, time-to-hire, recruiter performance).
+
+List non-functional requirements (how the system should behave):
+Easy-to-use UI (LWC).
+Secure (restricted access by role).
+Scalable (can handle multiple recruiters, jobs, candidates).
+Integratable with other systems (email, APIs).
+
+✅ Deliverable: A requirements document (table with "Requirement → Description → Priority").
+
+
+2️⃣ Stakeholder Analysis
+Goal: Understand who will use the system and what they expect.
+Steps:
+List your stakeholders:
+
+HR Manager → Wants approval process, dashboards, overall visibility.
+Recruiter → Needs to manage job postings, candidates, and interviews.
+Interviewer → Needs to see assigned interviews, provide feedback.
+Candidate (external, not a Salesforce user) → Receives automated emails.
+For each stakeholder, define their role, responsibilities, and pain points.
+
+✅ Deliverable: A stakeholder matrix (Stakeholder → Role → Expectations → Pain Points).
+
+
+3️⃣ Business Process Mapping
+Goal: Document the current hiring process & map it to Salesforce.
+Steps:
+
+Draw an As-Is process flow (manual hiring today):
+Recruiter posts job externally → Candidates email resumes → Recruiter shortlists manually → Interview scheduled via email/phone → HR updates spreadsheets → Final approval.
+
+Draw a To-Be process flow (with Salesforce):
+Job Position record created → Candidates entered into Salesforce → Automated acknowledgment → Interview scheduled in Salesforce → Automated notifications → Hiring approval process → Dashboard updates.
+
+Tools to use:
+Draw.io, Lucidchart, or even PowerPoint SmartArt for diagrams.
+
+✅ Deliverable: A process flow diagram (As-Is vs To-Be).
+
+
+4️⃣ Industry-Specific Use Case Analysis
+Goal: Justify why Salesforce is a good platform for this solution.
+Steps:
+
+Research Recruitment Industry Trends:
+Many companies use ATS (Applicant Tracking Systems) like Workday, Taleo, Lever, Greenhouse.
+These are often expensive, less customizable.
+
+Map your system against them:
+Salesforce provides customization, automation, and dashboards at lower cost.
+Can integrate with LinkedIn Jobs, Gmail, Outlook.
+Extensible: tomorrow you can add Onboarding, Payroll, or Training on the same platform.
+
+✅ Deliverable: A comparison table (Traditional ATS vs Salesforce-based ATS).
+
+
