@@ -70,3 +70,152 @@ Extensible: tomorrow you can add Onboarding, Payroll, or Training on the same pl
 ✅ Deliverable: A comparison table (Traditional ATS vs Salesforce-based ATS).
 
 
+Phase 2: Salesforce Editions, Security, and Environment Setup
+
+1️⃣ Salesforce Editions
+Goal: Understand which edition you are using.
+
+Developer Edition (Dev Org) is used in this project.
+Provides full platform features, limited storage, 2 Salesforce licenses, 2 Salesforce Platform licenses.
+🚫 No Sandboxes (Sandbox is only for Enterprise/Performance/Unlimited editions).
+
+✅ Deliverable: Developer Org confirmed as project environment.
+
+
+2️⃣ Company Profile Setup
+Goal: Configure org identity.
+Setup → Company Information
+Set Company Name: Vellore Institute of Technology
+Set Default Locale: English (India)
+Set Time Zone: (GMT +5:30) India Standard Time
+Set Currency: USD ($)
+
+✅ Deliverable: Company Profile reflects your organization identity.
+
+
+3️⃣ Business Hours & Holidays
+Goal: Define working hours for SLA and interview scheduling.
+Setup → Business Hours → New
+Name: Default Business Hours
+Time: 9:00 AM – 6:00 PM, Mon–Fri
+Setup → Holidays → Add holidays (e.g., Republic Day, Diwali, Independence Day).
+
+✅ Deliverable: Business Hours & Holidays configured for recruitment operations.
+
+
+4️⃣ Fiscal Year Settings
+Goal: Align reporting with org’s fiscal year.
+Setup → Fiscal Year
+Choose Standard Fiscal Year (Jan–Dec) for simplicity.
+
+✅ Deliverable: Fiscal Year set for reporting dashboards.
+
+
+5️⃣ User Setup & Licenses
+Goal: Create users with correct licenses.
+Recruiter → Salesforce License
+HR Manager → Salesforce License
+Interviewer → Salesforce Platform License
+Setup → Users → New User → Assign licenses & roles.
+
+✅ Deliverable: Users created & active.
+
+
+6️⃣ Profiles
+Goal: Define baseline permissions.
+Clone Standard User profile → create:
+Recruiter Profile
+HR Manager Profile
+Interviewer Profile
+Assign profiles to users.
+
+✅ Deliverable: 3 Profiles created & mapped to users.
+
+
+7️⃣ Roles
+Goal: Control record-level access (hierarchy).
+Setup → Roles → Add Roles under company root:
+HR Manager (top)
+Recruiter (reports to HR)
+Interviewer (reports to Recruiter)
+
+✅ Deliverable: Role hierarchy established.
+
+
+8️⃣ Permission Sets
+Goal: Provide extra permissions not tied to profile.
+Create Permission Sets:
+Interview Scheduler (assigned to Interviewer)
+HR Approver (assigned to HR Manager)
+
+✅ Deliverable: Permission sets created & assigned.
+
+
+9️⃣ Organization-Wide Defaults (OWD)
+Goal: Define baseline record access.
+Setup → Sharing Settings → OWD:
+Job Position → Private
+Candidate → Private
+Interview → Private
+This ensures records are only visible to record owners or higher roles.
+
+✅ Deliverable: OWD configured for custom objects (will apply after Phase 3 object creation).
+
+
+🔟 Sharing Rules
+Goal: Open selective access beyond OWD.
+Example: Share all Candidates with HR Manager role.
+Setup → Sharing Rules → New:
+Object: Candidate
+Share with: Role = HR Manager
+Access: Read/Write
+
+✅ Deliverable: Sharing rules configured (to apply after objects exist).
+
+
+1️⃣1️⃣ Login Access Policies
+Goal: Define org-wide login security.
+Setup → Login Access Policies:
+Enable “Administrators Can Log in as Any User”
+Setup → Password Policies:
+Expiration: Never
+Lockout: 5 attempts
+
+✅ Deliverable: Secure login & password policy applied.
+
+
+1️⃣2️⃣ Dev Org Setup
+Goal: Prepare Developer Org for project.
+Confirm domain: orgfarm-cbd22b4b69-dev-ed.develop.my.salesforce.com
+Setup → My Domain → Branding (Logo + Color)
+Setup → Language Settings → English
+Setup → Time Zone → IST
+
+✅ Deliverable: Dev Org personalized & configured.
+
+
+1️⃣3️⃣ Sandbox Usage
+⚠️ Developer Edition does not provide sandboxes.
+If Enterprise Edition → Setup → Sandboxes → Create.
+For Dev Org → simulate sandbox using a separate free Developer Org.
+
+✅ Deliverable: Sandbox (not available in Dev Org, optional in Enterprise).
+
+
+1️⃣4️⃣ Deployment Basics
+Goal: Enable deployment through VS Code + GitHub.
+Steps:
+
+Authorize Org:
+sf org login web --alias DevOrg --set-default
+
+Retrieve metadata (Profiles, Roles, Permission Sets, Apps):
+sf project retrieve start --manifest manifest/package.xml --target-org DevOrg
+
+GitHub integration:
+git add .
+git commit -m "Phase 2 setup metadata"
+git push
+
+⚠️ Important Note:
+Deployment of Phase 2 metadata will fail until Phase 3 objects are created (Candidate, Job Position, Interview).
