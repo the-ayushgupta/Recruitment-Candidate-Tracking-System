@@ -14,5 +14,7 @@
     <tabs>standard-OperatingHours</tabs>
     <tabs>standard-ServiceAppointment</tabs>
     <tabs>Candidate__c</tabs>
+    <tabs>Job_Position__c</tabs>
+    <tabs>Interview__c</tabs>
     <uiType>Lightning</uiType>
 </CustomApplication>

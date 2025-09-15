@@ -11,10 +11,18 @@
     <tabs>standard-CmsWorkspaces</tabs>
     <tabs>standard-CmsExperiences</tabs>
     <tabs>Candidate__c</tabs>
+    <tabs>Job_Position__c</tabs>
+    <tabs>Interview__c</tabs>
     <uiType>Lightning</uiType>
     <workspaceConfig>
         <mappings>
             <tab>Candidate__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Interview__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Job_Position__c</tab>
         </mappings>
         <mappings>
             <tab>standard-CmsAuthorHome</tab>

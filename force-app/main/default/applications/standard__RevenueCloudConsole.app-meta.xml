@@ -9,11 +9,19 @@
     <tabs>standard-Product2</tabs>
     <tabs>standard-Pricebook2</tabs>
     <tabs>Candidate__c</tabs>
+    <tabs>Job_Position__c</tabs>
+    <tabs>Interview__c</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>RevenueCloudConsole_UtilityBar</utilityBar>
     <workspaceConfig>
         <mappings>
             <tab>Candidate__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Interview__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Job_Position__c</tab>
         </mappings>
         <mappings>
             <tab>standard-Pricebook2</tab>

@@ -1,20 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <!-- Custom Objects -->
+    <types>
+        <members>Candidate__c</members>
+        <members>Job_Position__c</members>
+        <members>Interview__c</members>
+        <name>CustomObject</name>
+    </types>
+
+    <!-- Layouts -->
+    <types>
+        <members>*</members>
+        <name>Layout</name>
+    </types>
+
+    <!-- Record Types -->
+    <types>
+        <members>*</members>
+        <name>RecordType</name>
+    </types>
+
+    <!-- Tabs -->
+    <types>
+        <members>*</members>
+        <name>CustomTab</name>
+    </types>
+
+    <!-- Profiles -->
     <types>
         <members>*</members>
         <name>Profile</name>
     </types>
+
+    <!-- Roles -->
     <types>
         <members>*</members>
         <name>Role</name>
     </types>
+
+    <!-- Permission Sets -->
     <types>
         <members>*</members>
         <name>PermissionSet</name>
     </types>
+
+    <!-- Custom Applications -->
     <types>
         <members>*</members>
         <name>CustomApplication</name>
     </types>
+
     <version>59.0</version>
 </Package>

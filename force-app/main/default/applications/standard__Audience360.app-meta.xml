@@ -33,5 +33,7 @@
     <tabs>standard-Dashboard</tabs>
     <tabs>standard-UnstructuredData</tabs>
     <tabs>Candidate__c</tabs>
+    <tabs>Job_Position__c</tabs>
+    <tabs>Interview__c</tabs>
     <uiType>Lightning</uiType>
 </CustomApplication>

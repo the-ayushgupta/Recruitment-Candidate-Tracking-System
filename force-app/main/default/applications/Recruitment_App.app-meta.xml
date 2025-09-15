@@ -11,6 +11,11 @@
     <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
     <label>Recruitment App</label>
     <navType>Standard</navType>
+    <tabs>standard-ApprovalsHome</tabs>
+    <tabs>Job_Position__c</tabs>
+    <tabs>Candidate__c</tabs>
+    <tabs>Interview__c</tabs>
+    <tabs>standard-report</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>Recruitment_App_UtilityBar</utilityBar>
 </CustomApplication>
