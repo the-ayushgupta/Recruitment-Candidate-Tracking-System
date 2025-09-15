@@ -219,3 +219,79 @@ git push
 
 ⚠️ Important Note:
 Deployment of Phase 2 metadata will fail until Phase 3 objects are created (Candidate, Job Position, Interview).
+
+
+
+Phase-3: Data Modeling & Relationships
+
+
+1️⃣ Standard & Custom Objects
+Goal: Define the entities of the system.
+Custom Objects Created:
+Candidate__c → Stores applicant details.
+Job_Position__c → Stores job opening details.
+Interview__c → Stores interview schedules & feedback.
+
+Why: These 3 objects represent the backbone of a recruitment system.
+
+✅ Deliverable: All 3 objects exist in Salesforce and appear as tabs in the Recruitment App.
+
+
+2️⃣ Fields
+Goal: Capture all necessary information.
+Candidate__c → Name, Email, Phone, Resume_Link, Status.
+Job_Position__c → Title, Department, Location, Openings, Status.
+Interview__c → Date, Time, Interviewer (Lookup → User), Candidate (Lookup → Candidate), Job Position (Lookup → Job Position), Feedback.
+
+Why: Custom fields allow detailed tracking of candidates, jobs, and interviews.
+
+✅ Deliverable: Each object contains the right custom fields with proper data types (Text, Picklist, Lookup).
+
+
+3️⃣ Record Types
+Goal: Allow different processes/layouts depending on the stage or type.
+Candidate__c → Record Types: Applicant, Shortlisted, Hired.
+Job_Position__c → Record Types: Open Job, Closed Job.
+Interview__c → Record Types: Screening, Technical, HR Interview.
+
+Why: Different record types + layouts = tailored views for Recruiter, HR, and Interviewer.
+
+✅ Deliverable: Record Types created & assigned to Profiles (Recruiter, HR Manager, Interviewer).
+
+
+4️⃣ Page Layouts
+Goal: Customize what fields each role sees on a record.
+Candidate Layout: Recruiter/HR can edit full details, Interviewer hidden.
+Job Position Layout: Recruiter/HR visible, Interviewer hidden.
+Interview Layout: Interviewer can view Candidate + Job + give Feedback.
+
+Why: Profiles + Layouts = security & role-based visibility.
+
+✅ Deliverable: Layouts assigned via Page Layout Assignment to Profiles.
+
+
+5️⃣ Compact Layouts
+Goal: Control fields shown in record highlights panel.
+Candidate Compact Layout: Candidate Name, Email, Status, Job Applied.
+Job Position Compact Layout: Title, Department, Location, Status.
+Interview Compact Layout: Candidate, Job Position, Date, Status.
+
+✅ Deliverable: Compact Layouts created & assigned as Primary.
+
+
+6️⃣ Schema Builder
+Goal: Visualize all objects + relationships.
+Candidate → Lookup → Job Position.
+Interview → Lookup → Candidate.
+Interview → Lookup → Job Position.
+
+✅ Deliverable: Exported Schema diagram (screenshot for report).
+
+
+7️⃣ Relationships
+Goal: Define how data connects.
+Candidate → Job Position (Lookup).
+Interview → Candidate (Lookup).
+Interview → Job Position (Lookup).
+
+✅ Deliverable: Relationships tested (when creating Interview, you can link Candidate + Job).
