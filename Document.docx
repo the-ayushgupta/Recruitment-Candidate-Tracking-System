@@ -295,3 +295,101 @@ Interview → Candidate (Lookup).
 Interview → Job Position (Lookup).
 
 ✅ Deliverable: Relationships tested (when creating Interview, you can link Candidate + Job).
+
+
+
+ Phase 4: Process Automation (Admin)
+
+1️⃣ Validation Rules
+Goal: Prevent bad data entry.
+Examples (Recruitment System):
+Candidate must have Email before saving.
+Interview Date must be in the future.
+Steps:
+Setup → Object Manager → Candidate → Validation Rules → New.
+Example Rule (Email Required):
+ ISBLANK( Email__c )
+ Error: “Candidate Email is required.”
+Example Rule (Future Interview Date):
+ Interview_Date__c < TODAY()
+ Error: “Interview Date must be in the future.”
+
+
+✅ Deliverable: Rules active on Candidate & Interview objects.
+
+2️⃣ Workflow Rule + Email Alert
+Requirement: Notify HR when a Candidate is hired.
+Automation: Workflow Rule on Candidate → Email Alert → HR.
+Workflow Rule setup (criteria Status__c = Hired).
+
+
+
+
+3️⃣ Process Builder (or Flow Replacement)
+Example:
+When Job Position Status = "Closed", automatically update all related Candidate records to "Rejected".
+Steps:
+Setup → Process Builder → New.
+Object = Job Position.
+Trigger = When record changes → Status = Closed.
+Action = Update Related Records → Candidates linked → set Status = Rejected.
+
+
+✅ Deliverable: Process Builder active on Job Position.
+
+4️⃣ Approval Process
+Goal: Get HR approval before a job posting goes live.
+Example:
+New Job Position must be approved by HR Manager.
+Steps:
+Setup → Approval Processes → New Approval Process.
+Object = Job Position.
+Entry Criteria = Status = "Pending Approval".
+Approver = HR Manager.
+Final Action = Update field Status = "Approved".
+
+
+✅ Deliverable: Approval process active on Job Position.
+
+5️⃣ Flow Builder
+Flows are the future of automation in Salesforce.
+Screen Flow → Recruiter can enter Candidate details via a guided form.
+Record-Triggered Flow → When a Candidate is created, send an email to Recruiter.
+Scheduled Flow → Weekly email to HR summarizing number of interviews scheduled.
+Auto-launched Flow → Can be invoked from Process Builder / Apex.
+
+ Requirement 1: Create Task when Interview scheduled.
+
+ Requirement 2: Update Candidate Status when Interview is Selected.
+
+
+
+
+6️⃣ Email Alerts
+Goal: Send automated emails.
+Examples:
+“Thank you for applying” email to Candidate.
+“Interview scheduled” email to Interviewer.
+Steps:
+Setup → Email Alerts → New.
+Select template + recipient (Interviewer/HR/Candidate).
+Use in Workflow / Flow.
+
+
+✅ Deliverable: Email alerts linked with automation rules.
+
+7️⃣ Field Updates
+Goal: Auto-update fields based on triggers.
+Example:
+If Interview Feedback = "Selected", update Candidate Status = "Shortlisted".
+
+
+✅ Deliverable: Field Updates included in Workflow / Process Builder.
+
+8️⃣ Tasks
+Goal: Assign To-Dos automatically.
+Example:
+When a Candidate applies, create a Task for Recruiter: “Review Resume”.
+
+
+✅ Deliverable: Task creation automation.
