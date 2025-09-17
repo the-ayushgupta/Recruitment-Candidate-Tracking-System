@@ -188,6 +188,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Interview__c.Candidate_Email__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Interview__c.Feedback_c__c</field>
         <readable>false</readable>
     </fieldPermissions>

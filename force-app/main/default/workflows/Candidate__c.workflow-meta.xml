@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>Candidate_Hired_Notify_HR</fullName>
+        <description>Candidate Hired - Notify HR</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>beck_hr@gmail.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/SalesforceSchedulerCreateApptEmailTemplate</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>Update_Candidate_Status_to_Hired</fullName>
+        <field>Status_c__c</field>
+        <literalValue>Hired</literalValue>
+        <name>Update Candidate Status to Hired</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>Candidate Status</fullName>
+        <actions>
+            <name>Candidate_Hired_Notify_HR</name>
+            <type>Alert</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Candidate__c.Status_c__c</field>
+            <operation>equals</operation>
+            <value>Hired</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+</Workflow>

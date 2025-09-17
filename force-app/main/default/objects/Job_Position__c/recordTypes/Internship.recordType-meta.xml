@@ -30,6 +30,10 @@
     <picklistValues>
         <picklist>Status_c__c</picklist>
         <values>
+            <fullName>Approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Closed</fullName>
             <default>false</default>
         </values>
@@ -40,6 +44,14 @@
         <values>
             <fullName>Open</fullName>
             <default>true</default>
+        </values>
+        <values>
+            <fullName>Pending Approval</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rejected</fullName>
+            <default>false</default>
         </values>
     </picklistValues>
 </RecordType>

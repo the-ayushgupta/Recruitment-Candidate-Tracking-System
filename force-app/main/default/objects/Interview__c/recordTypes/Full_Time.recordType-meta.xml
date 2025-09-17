@@ -21,6 +21,10 @@
             <fullName>Scheduled</fullName>
             <default>false</default>
         </values>
+        <values>
+            <fullName>Selected</fullName>
+            <default>false</default>
+        </values>
     </picklistValues>
     <picklistValues>
         <picklist>Round_c__c</picklist>

@@ -38,6 +38,10 @@
                 <behavior>Edit</behavior>
                 <field>Round_c__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Candidate_Email__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns/>
         <style>TwoColumnsTopToBottom</style>
