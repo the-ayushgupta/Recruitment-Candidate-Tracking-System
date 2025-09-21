@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
     <!-- Custom Objects -->
     <types>
         <members>Candidate__c</members>
@@ -50,7 +51,7 @@
         <name>CustomApplication</name>
     </types>
 
-    <!-- Phase 4 Metadata -->
+    <!-- Phase 4: Workflow & Automation -->
     <types>
         <members>*</members>
         <name>ValidationRule</name>
@@ -70,6 +71,26 @@
     <types>
         <members>*</members>
         <name>CustomNotificationType</name>
+    </types>
+
+    <!-- Phase 5: Apex Code -->
+    <types>
+        <members>*</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>ApexTrigger</name>
+    </types>
+
+    <!-- Phase 6: Lightning UI -->
+    <types>
+        <members>*</members>
+        <name>FlexiPage</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>LightningComponentBundle</name>
     </types>
 
     <version>59.0</version>
