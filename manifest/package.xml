@@ -9,37 +9,21 @@
         <name>CustomObject</name>
     </types>
 
-    <!-- Layouts -->
-    <types>
-        <members>*</members>
-        <name>Layout</name>
-    </types>
-
-    <!-- Record Types -->
-    <types>
-        <members>*</members>
-        <name>RecordType</name>
-    </types>
-
     <!-- Tabs -->
     <types>
         <members>*</members>
         <name>CustomTab</name>
     </types>
 
-    <!-- Profiles -->
+    <!-- Profiles, Roles, Permission Sets -->
     <types>
         <members>*</members>
         <name>Profile</name>
     </types>
-
-    <!-- Roles -->
     <types>
         <members>*</members>
         <name>Role</name>
     </types>
-
-    <!-- Permission Sets -->
     <types>
         <members>*</members>
         <name>PermissionSet</name>
@@ -91,6 +75,20 @@
     <types>
         <members>*</members>
         <name>LightningComponentBundle</name>
+    </types>
+
+    <!-- Phase 9: Reporting -->
+    <types>
+        <members>Public Reports/Candidate_Pipeline_Report_tHD</members>
+        <name>Report</name>
+    </types>
+    <types>
+        <members>oVjFHSHv1kyQHEfi1yqOHvECpLKf1y</members>
+        <name>Dashboard</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>ReportType</name>
     </types>
 
     <version>59.0</version>
