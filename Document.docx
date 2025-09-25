@@ -1,395 +1,167 @@
-Recruitment & Candidate Tracking System.
-
-
+📘 Recruitment Candidate Tracking
+	System 
 Phase 1: Problem Understanding & Industry Analysis
+Requirement Gathering: Need for an app to manage recruitment – candidates, interviews, job positions.
 
-1️⃣ Requirement Gathering
-Goal: Clearly define what the system must achieve.
-Steps:
-Identify the use case: "Recruitment & Candidate Tracking System."
 
-List functional requirements (what the system must do):
-Create/manage Job Positions.
-Store and track Candidate details (resume, skills, status).
-Schedule Interviews linked to candidates & jobs.
-Automate communication (acknowledgment, interview notifications).
-Generate Reports/Dashboards (pipeline, time-to-hire, recruiter performance).
+Stakeholder Analysis: Recruiters, Hiring Managers, HR, and Admins.
 
-List non-functional requirements (how the system should behave):
-Easy-to-use UI (LWC).
-Secure (restricted access by role).
-Scalable (can handle multiple recruiters, jobs, candidates).
-Integratable with other systems (email, APIs).
 
-✅ Deliverable: A requirements document (table with "Requirement → Description → Priority").
+Business Process Mapping: Candidate applies → Interview scheduled → Status updates → Offer decision.
 
 
-2️⃣ Stakeholder Analysis
-Goal: Understand who will use the system and what they expect.
-Steps:
-List your stakeholders:
+Industry Use Case: Common need in IT/HR industries for structured recruitment tracking.
 
-HR Manager → Wants approval process, dashboards, overall visibility.
-Recruiter → Needs to manage job postings, candidates, and interviews.
-Interviewer → Needs to see assigned interviews, provide feedback.
-Candidate (external, not a Salesforce user) → Receives automated emails.
-For each stakeholder, define their role, responsibilities, and pain points.
 
-✅ Deliverable: A stakeholder matrix (Stakeholder → Role → Expectations → Pain Points).
 
+Phase 2: Org Setup & Configuration
+Salesforce Edition: Developer Org used.
 
-3️⃣ Business Process Mapping
-Goal: Document the current hiring process & map it to Salesforce.
-Steps:
 
-Draw an As-Is process flow (manual hiring today):
-Recruiter posts job externally → Candidates email resumes → Recruiter shortlists manually → Interview scheduled via email/phone → HR updates spreadsheets → Final approval.
+Company Profile Setup: Configured company info.
 
-Draw a To-Be process flow (with Salesforce):
-Job Position record created → Candidates entered into Salesforce → Automated acknowledgment → Interview scheduled in Salesforce → Automated notifications → Hiring approval process → Dashboard updates.
 
-Tools to use:
-Draw.io, Lucidchart, or even PowerPoint SmartArt for diagrams.
+Users & Licenses: Created and managed users for testing.
 
-✅ Deliverable: A process flow diagram (As-Is vs To-Be).
 
+Profiles & Roles: Set up roles for Recruiter, Manager, Admin.
 
-4️⃣ Industry-Specific Use Case Analysis
-Goal: Justify why Salesforce is a good platform for this solution.
-Steps:
 
-Research Recruitment Industry Trends:
-Many companies use ATS (Applicant Tracking Systems) like Workday, Taleo, Lever, Greenhouse.
-These are often expensive, less customizable.
+Permission Sets: Configured additional permissions where needed.
 
-Map your system against them:
-Salesforce provides customization, automation, and dashboards at lower cost.
-Can integrate with LinkedIn Jobs, Gmail, Outlook.
-Extensible: tomorrow you can add Onboarding, Payroll, or Training on the same platform.
 
-✅ Deliverable: A comparison table (Traditional ATS vs Salesforce-based ATS).
+OWD & Sharing Rules: Configured basic sharing for Candidate and Job Position objects.
 
 
-Phase 2: Salesforce Editions, Security, and Environment Setup
+Dev Org Setup: Fully set up developer org for project.
 
-1️⃣ Salesforce Editions
-Goal: Understand which edition you are using.
 
-Developer Edition (Dev Org) is used in this project.
-Provides full platform features, limited storage, 2 Salesforce licenses, 2 Salesforce Platform licenses.
-🚫 No Sandboxes (Sandbox is only for Enterprise/Performance/Unlimited editions).
 
-✅ Deliverable: Developer Org confirmed as project environment.
+Phase 3: Data Modeling & Relationships
+Custom Objects:
 
 
-2️⃣ Company Profile Setup
-Goal: Configure org identity.
-Setup → Company Information
-Set Company Name: Vellore Institute of Technology
-Set Default Locale: English (India)
-Set Time Zone: (GMT +5:30) India Standard Time
-Set Currency: USD ($)
+Candidate__c
+Job_Position__c
+Interview__c
 
-✅ Deliverable: Company Profile reflects your organization identity.
 
+Fields: Created required fields like Name, Email, Status, etc.
 
-3️⃣ Business Hours & Holidays
-Goal: Define working hours for SLA and interview scheduling.
-Setup → Business Hours → New
-Name: Default Business Hours
-Time: 9:00 AM – 6:00 PM, Mon–Fri
-Setup → Holidays → Add holidays (e.g., Republic Day, Diwali, Independence Day).
 
-✅ Deliverable: Business Hours & Holidays configured for recruitment operations.
+Relationships:
 
 
-4️⃣ Fiscal Year Settings
-Goal: Align reporting with org’s fiscal year.
-Setup → Fiscal Year
-Choose Standard Fiscal Year (Jan–Dec) for simplicity.
+Candidate → Interview (Lookup)
+Job Position → Candidate (Lookup)
 
-✅ Deliverable: Fiscal Year set for reporting dashboards.
 
+Page Layouts & Compact Layouts: Customized layouts for each object.
 
-5️⃣ User Setup & Licenses
-Goal: Create users with correct licenses.
-Recruiter → Salesforce License
-HR Manager → Salesforce License
-Interviewer → Salesforce Platform License
-Setup → Users → New User → Assign licenses & roles.
 
-✅ Deliverable: Users created & active.
+Schema Builder: Used for visualizing object models.
 
 
-6️⃣ Profiles
-Goal: Define baseline permissions.
-Clone Standard User profile → create:
-Recruiter Profile
-HR Manager Profile
-Interviewer Profile
-Assign profiles to users.
 
-✅ Deliverable: 3 Profiles created & mapped to users.
 
 
-7️⃣ Roles
-Goal: Control record-level access (hierarchy).
-Setup → Roles → Add Roles under company root:
-HR Manager (top)
-Recruiter (reports to HR)
-Interviewer (reports to Recruiter)
+Phase 4: Process Automation (Admin)
+Validation Rules: Prevented invalid candidate entries.
 
-✅ Deliverable: Role hierarchy established.
 
+Workflow Rules: Triggered notifications (basic).
 
-8️⃣ Permission Sets
-Goal: Provide extra permissions not tied to profile.
-Create Permission Sets:
-Interview Scheduler (assigned to Interviewer)
-HR Approver (assigned to HR Manager)
 
-✅ Deliverable: Permission sets created & assigned.
+Flow Builder: Built automation for candidate status updates.
 
 
-9️⃣ Organization-Wide Defaults (OWD)
-Goal: Define baseline record access.
-Setup → Sharing Settings → OWD:
-Job Position → Private
-Candidate → Private
-Interview → Private
-This ensures records are only visible to record owners or higher roles.
+Approval Process: Setup for job offer approval.
 
-✅ Deliverable: OWD configured for custom objects (will apply after Phase 3 object creation).
 
+Email Alerts: Sent to recruiters on key updates.
 
-🔟 Sharing Rules
-Goal: Open selective access beyond OWD.
-Example: Share all Candidates with HR Manager role.
-Setup → Sharing Rules → New:
-Object: Candidate
-Share with: Role = HR Manager
-Access: Read/Write
 
-✅ Deliverable: Sharing rules configured (to apply after objects exist).
 
+Phase 5: Apex Programming (Developer)
+Apex Classes:
 
-1️⃣1️⃣ Login Access Policies
-Goal: Define org-wide login security.
-Setup → Login Access Policies:
-Enable “Administrators Can Log in as Any User”
-Setup → Password Policies:
-Expiration: Never
-Lockout: 5 attempts
 
-✅ Deliverable: Secure login & password policy applied.
+CandidateDashboardController (LWC backend)
+ExternalAPIService (REST callout with Named Credential)
+RecruitmentUtils (helper class)
 
 
-1️⃣2️⃣ Dev Org Setup
-Goal: Prepare Developer Org for project.
-Confirm domain: orgfarm-cbd22b4b69-dev-ed.develop.my.salesforce.com
-Setup → My Domain → Branding (Logo + Color)
-Setup → Language Settings → English
-Setup → Time Zone → IST
+Apex Trigger: InterviewTriggerHandler for interview logic.
 
-✅ Deliverable: Dev Org personalized & configured.
 
+Future Methods: Used for async API callouts.
 
-1️⃣3️⃣ Sandbox Usage
-⚠️ Developer Edition does not provide sandboxes.
-If Enterprise Edition → Setup → Sandboxes → Create.
-For Dev Org → simulate sandbox using a separate free Developer Org.
 
-✅ Deliverable: Sandbox (not available in Dev Org, optional in Enterprise).
+Test Classes: Created basic tests for coverage.
 
 
-1️⃣4️⃣ Deployment Basics
-Goal: Enable deployment through VS Code + GitHub.
-Steps:
 
-Authorize Org:
-sf org login web --alias DevOrg --set-default
 
-Retrieve metadata (Profiles, Roles, Permission Sets, Apps):
-sf project retrieve start --manifest manifest/package.xml --target-org DevOrg
+Phase 6: User Interface Development
+Lightning App Builder: Created Recruitment Home Page.
 
-GitHub integration:
-git add .
-git commit -m "Phase 2 setup metadata"
-git push
 
-⚠️ Important Note:
-Deployment of Phase 2 metadata will fail until Phase 3 objects are created (Candidate, Job Position, Interview).
+Tabs: Added Candidate, Job Position, Interview tabs.
 
 
+LWC: Built candidateDashboard component.
 
-Phase-3: Data Modeling & Relationships
 
+Integration with Apex: Dashboard displayed pipeline using Apex data.
 
-1️⃣ Standard & Custom Objects
-Goal: Define the entities of the system.
-Custom Objects Created:
-Candidate__c → Stores applicant details.
-Job_Position__c → Stores job opening details.
-Interview__c → Stores interview schedules & feedback.
 
-Why: These 3 objects represent the backbone of a recruitment system.
 
-✅ Deliverable: All 3 objects exist in Salesforce and appear as tabs in the Recruitment App.
+Recruitment Home Page
 
 
-2️⃣ Fields
-Goal: Capture all necessary information.
-Candidate__c → Name, Email, Phone, Resume_Link, Status.
-Job_Position__c → Title, Department, Location, Openings, Status.
-Interview__c → Date, Time, Interviewer (Lookup → User), Candidate (Lookup → Candidate), Job Position (Lookup → Job Position), Feedback.
+Candidate Dashboard LWC in action
 
-Why: Custom fields allow detailed tracking of candidates, jobs, and interviews.
 
-✅ Deliverable: Each object contains the right custom fields with proper data types (Text, Picklist, Lookup).
 
+Phase 7: Integration & External Access
+Named Credential: Configured for JSONPlaceholder.
 
-3️⃣ Record Types
-Goal: Allow different processes/layouts depending on the stage or type.
-Candidate__c → Record Types: Applicant, Shortlisted, Hired.
-Job_Position__c → Record Types: Open Job, Closed Job.
-Interview__c → Record Types: Screening, Technical, HR Interview.
 
-Why: Different record types + layouts = tailored views for Recruiter, HR, and Interviewer.
+Apex Callout: Fetched external candidate data via ExternalAPIService.
 
-✅ Deliverable: Record Types created & assigned to Profiles (Recruiter, HR Manager, Interviewer).
 
+Debug Logs: Configured monitoring for API responses.
 
-4️⃣ Page Layouts
-Goal: Customize what fields each role sees on a record.
-Candidate Layout: Recruiter/HR can edit full details, Interviewer hidden.
-Job Position Layout: Recruiter/HR visible, Interviewer hidden.
-Interview Layout: Interviewer can view Candidate + Job + give Feedback.
 
-Why: Profiles + Layouts = security & role-based visibility.
 
-✅ Deliverable: Layouts assigned via Page Layout Assignment to Profiles.
 
+Phase 8: Data Management & Deployment
+Data Import Wizard: Imported sample candidate CSV.
 
-5️⃣ Compact Layouts
-Goal: Control fields shown in record highlights panel.
-Candidate Compact Layout: Candidate Name, Email, Status, Job Applied.
-Job Position Compact Layout: Title, Department, Location, Status.
-Interview Compact Layout: Candidate, Job Position, Date, Status.
 
-✅ Deliverable: Compact Layouts created & assigned as Primary.
+VS Code & SFDX: Used for deployments of LWC, Apex, and metadata.
 
 
-6️⃣ Schema Builder
-Goal: Visualize all objects + relationships.
-Candidate → Lookup → Job Position.
-Interview → Lookup → Candidate.
-Interview → Lookup → Job Position.
+Package.xml: Managed project metadata.
 
-✅ Deliverable: Exported Schema diagram (screenshot for report).
 
 
-7️⃣ Relationships
-Goal: Define how data connects.
-Candidate → Job Position (Lookup).
-Interview → Candidate (Lookup).
-Interview → Job Position (Lookup).
 
-✅ Deliverable: Relationships tested (when creating Interview, you can link Candidate + Job).
 
 
+Phase 9: Reporting, Dashboards & Security Review
+Reports: Created Candidate Pipeline Report (Summary report).
 
- Phase 4: Process Automation (Admin)
 
-1️⃣ Validation Rules
-Goal: Prevent bad data entry.
-Examples (Recruitment System):
-Candidate must have Email before saving.
-Interview Date must be in the future.
-Steps:
-Setup → Object Manager → Candidate → Validation Rules → New.
-Example Rule (Email Required):
- ISBLANK( Email__c )
- Error: “Candidate Email is required.”
-Example Rule (Future Interview Date):
- Interview_Date__c < TODAY()
- Error: “Interview Date must be in the future.”
+Dashboards: Built Recruitment Dashboard with Donut chart.
 
 
-✅ Deliverable: Rules active on Candidate & Interview objects.
+Security: Configured Profiles, Permission Sets, Sharing Settings.
 
-2️⃣ Workflow Rule + Email Alert
-Requirement: Notify HR when a Candidate is hired.
-Automation: Workflow Rule on Candidate → Email Alert → HR.
-Workflow Rule setup (criteria Status__c = Hired).
 
 
 
 
-3️⃣ Process Builder (or Flow Replacement)
-Example:
-When Job Position Status = "Closed", automatically update all related Candidate records to "Rejected".
-Steps:
-Setup → Process Builder → New.
-Object = Job Position.
-Trigger = When record changes → Status = Closed.
-Action = Update Related Records → Candidates linked → set Status = Rejected.
 
 
-✅ Deliverable: Process Builder active on Job Position.
 
-4️⃣ Approval Process
-Goal: Get HR approval before a job posting goes live.
-Example:
-New Job Position must be approved by HR Manager.
-Steps:
-Setup → Approval Processes → New Approval Process.
-Object = Job Position.
-Entry Criteria = Status = "Pending Approval".
-Approver = HR Manager.
-Final Action = Update field Status = "Approved".
-
-
-✅ Deliverable: Approval process active on Job Position.
-
-5️⃣ Flow Builder
-Flows are the future of automation in Salesforce.
-Screen Flow → Recruiter can enter Candidate details via a guided form.
-Record-Triggered Flow → When a Candidate is created, send an email to Recruiter.
-Scheduled Flow → Weekly email to HR summarizing number of interviews scheduled.
-Auto-launched Flow → Can be invoked from Process Builder / Apex.
-
- Requirement 1: Create Task when Interview scheduled.
-
- Requirement 2: Update Candidate Status when Interview is Selected.
-
-
-
-
-6️⃣ Email Alerts
-Goal: Send automated emails.
-Examples:
-“Thank you for applying” email to Candidate.
-“Interview scheduled” email to Interviewer.
-Steps:
-Setup → Email Alerts → New.
-Select template + recipient (Interviewer/HR/Candidate).
-Use in Workflow / Flow.
-
-
-✅ Deliverable: Email alerts linked with automation rules.
-
-7️⃣ Field Updates
-Goal: Auto-update fields based on triggers.
-Example:
-If Interview Feedback = "Selected", update Candidate Status = "Shortlisted".
-
-
-✅ Deliverable: Field Updates included in Workflow / Process Builder.
-
-8️⃣ Tasks
-Goal: Assign To-Dos automatically.
-Example:
-When a Candidate applies, create a Task for Recruiter: “Review Resume”.
-
-
-✅ Deliverable: Task creation automation.
